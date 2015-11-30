@@ -3,25 +3,26 @@
 import collections
 import linecache
 import pickle
+import os
+import glob
 
 def read_location_info(fname):
-    '''BCCWJのどの位置に欲しい文があるか読み取る。
-       データは、file name, line num, target wordの順で並んでる
-       keyをファイル名に、あとはvalueに'''
+    '''read location info and return info as dictionary
+       data: file name, line num, target word, etc
+       key: file name、value: count + others '''
+
     location_dict = collections.defaultdict(list)
     count = 0
     for line in open(fname):
-        file_name, line_num, target_word = line.strip().split(',')
+        file_name, line_num, target_word = line.strip().split(',')[1:4]
         location_dict[file_name].append((count, line_num, target_word))
         count += 1
     return location_dict
 
 
 def extract_sentence(location_dict):
-    '''作ったディクトの情報からセンテンス抽出'''
-    # 2010文を格納するリスト
+    '''extract sentences from extracted sentences from BCCWJ'''
     sentence_list = ['' for i in range(2010)]
-    # テキストがあるディレクトリ
     bccwj_dir = '../BCCWJ/original/'
 
     for fname in location_dict.keys():
@@ -33,10 +34,12 @@ def extract_sentence(location_dict):
 
 
 if __name__ == '__main__':
-    # 文の場所が書いてあるとこ
     location_fname = '../BCCWJ_target_location/location.txt'
-    # BCCWJのどのファイル、何行目にあるかを記録してあるディクト
+    
     location_dict = read_location_info(location_fname)
     sentence_list = extract_sentence(location_dict)
-    open('sentences.txt', 'w').write(''.join(sentence_list))
-    #pickle.dump(sentence_list, open('sentences.pkl', 'w'))
+    sentence_list = map(lambda x: x.strip() + '\n', sentence_list)
+
+    write_directory = '../Sentence/'
+    if  glob.glob(write_directory) == []: os.makedirs(write_directory)
+    open(write_directory + 'sentences.txt', 'w').write(''.join(sentence_list))
