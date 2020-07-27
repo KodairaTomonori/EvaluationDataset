@@ -43,6 +43,19 @@
   ランキングのデータはこれを参考にしてください。
   
 　
+論文： https://www.aclweb.org/anthology/P16-3001.pdf
+
+ ```
+ @inproceedings{kodaira-etal-2016-controlled,
+    title = "Controlled and Balanced Dataset for {J}apanese Lexical Simplification",
+    author = "Kodaira, Tomonori  and
+      Kajiwara, Tomoyuki  and
+      Komachi, Mamoru",
+    booktitle = "Proceedings of the {ACL} 2016 Student Research Workshop",
+    year = "2016",
+    pages = "1--7",
+}
+ ```
   
 
 ---------------
