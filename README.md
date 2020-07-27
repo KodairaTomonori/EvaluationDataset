@@ -4,7 +4,22 @@
   Sentences selected from BCCWJ, so they are not published.  
   Here, program which extract sentence is published.  
   This program is made by Python 2.7 .  
+  
+  
+  
+If you use this, please cite the following paper:
 
+```
+@inproceedings{kodaira-etal-2016-controlled,
+    title = "Controlled and Balanced Dataset for {J}apanese Lexical Simplification",
+    author = "Kodaira, Tomonori  and
+      Kajiwara, Tomoyuki  and
+      Komachi, Mamoru",
+    booktitle = "Proceedings of the {ACL} 2016 Student Research Workshop",
+    year = "2016",
+    pages = "1--7",
+}
+```
 
 ## Procedure:
   git clone https://github.com/KodairaTomonori/EvaluationDataset  
